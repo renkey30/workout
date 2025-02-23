@@ -108,7 +108,9 @@ function initializeFromCache() {
     try {
         const cachedProfile = localStorage.getItem(CACHE_KEYS.PROFILE);
         const cachedAuthState = localStorage.getItem(CACHE_KEYS.AUTH_STATE);
-        
+        console.log('Cached Profile:', cachedProfile);
+        console.log('Cached Auth State:', cachedAuthState);
+
         if (cachedProfile && cachedAuthState === 'logged_in') {
             const profileData = JSON.parse(cachedProfile);
             console.log('Found valid cache:', profileData);
