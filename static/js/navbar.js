@@ -564,3 +564,7 @@ function renderProfile(profileData) {
         userProfileDiv.classList.add('visible');
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    injectNavbar(determineActivePage()); // Pass the active page as needed
+});
