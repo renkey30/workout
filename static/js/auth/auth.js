@@ -111,17 +111,21 @@ function initializeFromCache() {
         console.log('Cached Profile:', cachedProfile);
         console.log('Cached Auth State:', cachedAuthState);
 
-        if (cachedProfile && cachedAuthState === 'logged_in') {
+        if (cachedProfile) {
+            console.log('Profile found in cache, parsing...');
             const profileData = JSON.parse(cachedProfile);
-            console.log('Found valid cache:', profileData);
-            renderProfile(profileData);
-            return true;
+            console.log('Parsed Profile Data:', profileData);
+            if (cachedAuthState === 'logged_in') {
+                console.log('User is logged in, rendering profile...');
+                renderProfile(profileData);
+                return true;
+            }
         }
     } catch (error) {
         console.error('Error reading cache:', error);
     }
     
-    console.log('No valid cache found');
+    console.log('No valid cache found, showing default auth state.');
     showDefaultAuthState();
     return false;
 }
