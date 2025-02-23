@@ -222,6 +222,15 @@ function handleLogin(event) {
                     uid: userCredential.user.uid,
                     email: userCredential.user.email
                 });
+                // Store user profile and auth state in local storage
+                const profileData = {
+                    uid: userCredential.user.uid,
+                    email: userCredential.user.email,
+                    displayName: userCredential.user.displayName,
+                    photoURL: userCredential.user.photoURL
+                };
+                localStorage.setItem(CACHE_KEYS.PROFILE, JSON.stringify(profileData));
+                localStorage.setItem(CACHE_KEYS.AUTH_STATE, 'logged_in');
                 const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
                 if (loginModal) {
                     loginModal.hide();
